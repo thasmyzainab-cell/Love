@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Anniversary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #fff5f5, #ffe6e6);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .anniversary-date {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .hearts {
+            font-size: 2rem;
+            color: #ff4d6d;
+            margin: 10px 0;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            color: #777;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #ff4d6d;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #ff4d6d;
+            margin: 10px auto;
+        }
+        
+        .message {
+            font-style: italic;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff9f9;
+            border-radius: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+        }
+        
+        .heart-btn {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .heart-btn:hover {
+            background: #ff758c;
+            transform: scale(1.05);
+        }
+        
+        .age-reveal {
+            text-align: center;
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .age-text {
+            font-size: 2rem;
+            color: #ff4d6d;
+            font-weight: bold;
+            margin: 20px 0;
+            animation: fadeIn 1s ease;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d6d;
+            animation: float 4s ease-in forwards;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Quiz Styles */
+        .quiz-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .quiz-container::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff7eb3);
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.3;
+        }
+        
+        .quiz-title {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .question-box {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .question-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .question {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .yes-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .no-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .progress {
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .question-number {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .heart-container {
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .quiz-heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            margin: 0 auto;
+            animation: pulse 1.2s infinite;
+        }
+        
+        .quiz-heart:before, .quiz-heart:after {
+            content: "";
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: #ff4d4d;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .quiz-heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .quiz-message {
+            font-size: 22px;
+            color: #ff4d4d;
+            margin-top: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .visible {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+        
+        .celebration {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* New Heart Button Styles */
+        .hearts-btn {
+            background: linear-gradient(to right, #ff4d6d, #ff758c);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 300px;
+        }
+        
+        .hearts-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
+        }
+        
+        .hearts-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Full Screen Hearts Styles */
+        .fullscreen-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .fullscreen-heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d6d;
+            animation: floatHearts 6s ease-in forwards;
+            pointer-events: none;
+            bottom: -50px;
+            opacity: 0.8;
+        }
+        
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Lock Screen Styles */
+        .lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        
+        .lock-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .lock-title {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .lock-hearts {
+            margin: 25px 0;
+            font-size: 44px;
+            color: #ff4d6d;
+            letter-spacing: 8px;
+        }
+        
+        .lock-message {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .password-container {
+            position: relative;
+            margin: 25px 0;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .password-input:focus {
+            border-color: #ff4d6d;
+            box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.3);
+        }
+        
+        .unlock-btn {
+            background: linear-gradient(to right, #ff4d6d, #ff758c);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .unlock-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
+        }
+        
+        .unlock-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .lock-instruction {
+            background-color: #fff9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #ff4d6d;
+        }
+        
+        .error-message {
+            color: #ff4d6d;
+            margin-top: 10px;
+            font-size: 14px;
+            height: 20px;
+        }
+        
+        /* Happy Anniversary Popup */
+        .anniversary-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        
+        .anniversary-popup.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .popup-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+        }
+        
+        .anniversary-popup.visible .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4d6d;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .popup-title {
+            color: #ff4d6d;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .popup-message {
+            color: #555;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .popup-hearts {
+            font-size: 4rem;
+            color: #ff4d6d;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .popup-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="fullscreen-hearts" id="fullscreenHearts"></div>
+    
+    <!-- Happy Anniversary Popup -->
+    <div class="anniversary-popup" id="anniversaryPopup">
+        <div class="popup-content">
+            <div class="popup-close" id="closePopup">×</div>
+            <h2 class="popup-title">Happy Anniversary!</h2>
+            <div class="popup-hearts">❤️ ❤️ ❤️</div>
+            <p class="popup-message">You've successfully unlocked my heart! Thank you for being the most amazing partner. I love you more than words can express.</p>
+            <button class="heart-btn" id="continueBtn">Continue to Celebration Babe</button>
+        </div>
+    </div>
+    
+    <!-- Lock Screen -->
+    <div class="lock-screen" id="lockScreen">
+        <div class="lock-container">
+            <h1 class="lock-title"><i class="fas fa-lock"></i> Heart Lock</h1>
+            
+            <div class="lock-hearts">❤️ ❤️ ❤️</div>
+            
+            <p class="lock-message">Enter the special password to unlock my heart</p>
+            
+            <div class="password-container">
+                <input type="password" class="password-input" id="passwordInput" placeholder="Enter password">
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <button class="unlock-btn" id="unlockButton">
+                <i class="fas fa-heart"></i> Unlock Heart
+            </button>
+            
+        </div>
+    </div>
+    
+    <!-- Main Content (Hidden Initially) -->
+    <div class="main-container" id="mainContent" style="display: none;">
+        <header>
+            <div class="hearts">❤️ ❤️ ❤️</div>
+            <h1>Happy Anniversary, My Love!</h1>
+            <div class="anniversary-date">Celebrating 1 Years Together</div>
+            <div class="hearts">❤️ ❤️ ❤️</div>
+        </header>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="age-reveal" id="ageReveal">
+            <div class="age-text" id="ageText"></div>
+        </div>
+        
+        <section class="section">
+            <h2 class="section-title">My Promise to You</h2>
+            <p class="message">
+                "I promise to stand by your side through all of life's adventures, to support your dreams as if they were my own, to love you unconditionally even on our most challenging days, and to always find reasons to laugh together."
+            </p>
+            <div style="text-align: center;">
+                <button class="heart-btn" onclick="revealAge()">
+                    <i class="fas fa-heart"></i> Click to Reveal My Heart
+                </button>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Love Quiz</h2>
+            <div class="quiz-container">
+                <h3 class="quiz-title"><i class="fas fa-heart"></i> How Well Do You Know Love? <i class="fas fa-heart"></i></h3>
+                
+                <div class="progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <div class="question-number">
+    Question <span id="current-question">1</span> of 5
+</div>
+                
+                <div id="question-container">
+                    <div class="question-box">
+                        <p class="question" id="question-text">Do you believe in love ?</p>
+                        <div class="buttons">
+                            <button class="btn yes-btn" onclick="answerQuestion(true)">
+                                <i class="fas fa-check"></i> Yes
+                            </button>
+                            <button class="btn no-btn" onclick="answerQuestion(false)">
+                                <i class="fas fa-times"></i> No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="heart-container" class="heart-container">
+                    <div class="quiz-heart"></div>
+                    <p class="quiz-message">Thank you babe!</p>
+                    <div class="celebration">
+                        <p>Your heart is full of love! ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+         <section class="section">
+            <h2 class="section-title">Our Story</h2>
+            <p class="message">
+                "One year ago, they nervously sat across from each other on their very first date. Today, they returned to the same café, no longer strangers but soulmates. Over ice cream and laughter, they reminisced about their journey—every fight, every hug, every late-night call that made them stronger. As the sun set, he whispered, “One year down, forever to go.” She smiled, knowing their love story had only just begun."
+            </p>
+            <p><CENTER>
+                                            உன் பார்வை தான் என் விடியல்,<br>
+                                            உன் சிரிப்பு தான் என் நிலவு.<br>
+                                            ஒரு வருடம் உன்னோடு நடந்தேன்,<br>
+                                            ஆயிரம் ஆண்டுகள் வாழ்ந்த உணர்வு.<br>
+                                            <br>
+                                            உன் கரங்களில் நான் கண்டேன்,<br>
+                                            என் வாழ்க்கையின் அர்த்தம் முழுவதும்.<br>
+                                            அன்பே, இந்த ஒரு வருடம் அல்ல,<br>
+                                            என் வாழ்நாள் முழுதும் உன்னோடு தான்.<br>
+           </CENTER></p>
+        </section>
+
+        <!-- New Heart Button Section -->
+        <section class="section">
+            <h2 class="section-title">Special Surprise</h2>
+            <p class="message">
+                "Click the button below to fill the entire screen with beautiful floating hearts, just like my love for you fills my heart!"
+            </p>
+            
+            <button class="hearts-btn" id="heartsButton">
+                <i class="fas fa-heart"></i> Fill Screen With Hearts
+            </button>
+        </section>
+        
+        <footer>
+            <p>❤️ ABEETH REESHA ❤️</p>
+            <p> 2025.09.08 - Our Forever</p>
+        </footer>
+    </div>
+
+    <script>
+        // Lock Screen Functionality
+        const unlockButton = document.getElementById('unlockButton');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMessage = document.getElementById('errorMessage');
+        const lockScreen = document.getElementById('lockScreen');
+        const mainContent = document.getElementById('mainContent');
+        const anniversaryPopup = document.getElementById('anniversaryPopup');
+        const closePopup = document.getElementById('closePopup');
+        const continueBtn = document.getElementById('continueBtn');
+        
+        // The correct password (change this to your actual special date)
+        const CORRECT_PASSWORD = "AR122526"; // DDMMYYYY format
+        
+        unlockButton.addEventListener('click', function() {
+            const password = passwordInput.value;
+            
+            if (password === CORRECT_PASSWORD) {
+                // Correct password
+                errorMessage.textContent = "";
+                
+                // Show anniversary popup instead of immediately showing main content
+                anniversaryPopup.classList.add('visible');
+                
+                // Create lots of hearts for celebration
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createHearts, i * 300);
+                }
+            } else {
+                // Incorrect password
+                errorMessage.textContent = "Incorrect password. Try again!";
+                passwordInput.style.borderColor = "#ff4d6d";
+                
+                // Shake animation for wrong password
+                passwordInput.classList.add('shake');
+                setTimeout(() => {
+                    passwordInput.classList.remove('shake');
+                }, 500);
+            }
+        });
+        
+        // Close popup and show main content
+        closePopup.addEventListener('click', function() {
+            anniversaryPopup.classList.remove('visible');
+            lockScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        });
+        
+        continueBtn.addEventListener('click', function() {
+            anniversaryPopup.classList.remove('visible');
+            lockScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        });
+        
+        // Allow pressing Enter to submit
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                unlockButton.click();
+            }
+        });
+        
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+            .shake {
+                animation: shake 0.5s;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Countdown timer
+        function updateCountdown() {
+            // Set your anniversary date here (year, month (0-11), day, hour, minute, second)
+            const anniversaryDate = new Date(2024, 7, 15, 0, 0, 0);
+            const now = new Date();
+            
+            // Calculate the difference in milliseconds
+            const diff = anniversaryDate - now;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Update the HTML
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Initial call and set interval to update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Create floating hearts
+        function createHearts() {
+            const floatingHearts = document.getElementById('floatingHearts');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            // Random position
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            
+            floatingHearts.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHearts, 300);
+        
+        // Age reveal function
+        function revealAge() {
+            const ageReveal = document.getElementById('ageReveal');
+            const ageText = document.getElementById('ageText');
+            
+            // Calculate age (assuming birth year is 1995)
+            const birthYear = 1995;
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - birthYear;
+            
+            // Show the age with a romantic message
+            ageText.innerHTML = `My heart Say<br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU <br> I LOVE YOU MY LOVE❤️❤️<br> `;
+            
+            // Show the age reveal section
+            ageReveal.style.display = 'block';
+            
+            // Create extra hearts for celebration
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createHearts, i * 100);
+            }
+            
+            // Scroll to the age reveal section
+            ageReveal.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Quiz functionality
+        const questions = [
+            "Do you believe in love?",
+            "Is honesty important in a relationship?",
+            "Do you think small gestures make a relationship stronger?",
+            "Do you believe true love lasts forever?",
+            "Will you marry me?"
+        ];
+        
+        let currentQuestion = 0;
+        const progressBar = document.getElementById('progress-bar');
+        const questionText = document.getElementById('question-text');
+        const questionContainer = document.getElementById('question-container');
+        const heartContainer = document.getElementById('heart-container');
+        const currentQuestionElement = document.getElementById('current-question');
+        
+        function updateProgressBar() {
+            const progress = ((currentQuestion) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        function createQuizHearts() {
+            const floatingHearts = document.getElementById('floatingHearts');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            // Random position
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            
+            floatingHearts.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        
+        function answerQuestion(answer) {
+            // For this example, we're not storing the answers, just progressing
+            currentQuestion++;
+            currentQuestionElement.textContent = currentQuestion + 1;
+            
+            // Create some floating hearts when answering
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createQuizHearts, i * 100);
+            }
+            
+            if (currentQuestion < questions.length) {
+                questionText.textContent = questions[currentQuestion];
+                updateProgressBar();
+            } else {
+                // Quiz completed
+                questionContainer.classList.add('hidden');
+                heartContainer.classList.add('visible');
+                updateProgressBar();
+                
+                // Create lots of floating hearts for celebration
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(createQuizHearts, i * 150);
+                }
+            }
+        }
+        
+        // Initialize the progress bar
+        updateProgressBar();
+        
+        // New heart button functionality
+        const heartsButton = document.getElementById('heartsButton');
+        
+        function createFullscreenHearts() {
+            const fullscreenHearts = document.getElementById('fullscreenHearts');
+            
+            // Create multiple hearts at once
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('fullscreen-heart');
+                
+                // Random position
+                const leftPosition = Math.random() * 100;
+                heart.style.left = leftPosition + 'vw';
+                
+                // Random size
+                const size = Math.random() * 30 + 20;
+                heart.style.fontSize = size + 'px';
+                
+                // Random animation duration
+                const duration = Math.random() * 5 + 4;
+                heart.style.animationDuration = duration + 's';
+                
+                // Random color variation
+                const colors = ['#ff4d6d', '#ff8fa3', '#ff5c8a', '#ff2d6d', '#ffacc7'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.color = randomColor;
+                
+                fullscreenHearts.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        heartsButton.addEventListener('click', function() {
+            // Add a "pulse" effect to the button
+            this.classList.add('active');
+            setTimeout(() => {
+                this.classList.remove('active');
+            }, 300);
+            
+            // Create lots of hearts to fill the screen
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createFullscreenHearts, i * 200);
+            }
+        });
+    </script>
+</body>
+</html>
